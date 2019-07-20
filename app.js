@@ -19,7 +19,9 @@ const express = require('express');
 
 const fs = require('fs');
 
-const router = require('./router')
+const router = require('./router');
+
+const bodyParser = require('body-parser');
 
 //第三步 创建服务器应用程序
 
@@ -78,6 +80,11 @@ app.engine('html', require('express-art-template'))
 //     })
 
 // })
+
+
+app.use(bodyParser.urlencoded({ extend: false }));
+
+app.use(bodyParser.json());
 
 app.use(router);
 
